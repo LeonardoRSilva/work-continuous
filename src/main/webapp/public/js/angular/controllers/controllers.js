@@ -2,9 +2,9 @@ myApp.controller('homeController',  function($scope, $http){
 
 var BASE_URL;
 if (window.location.port === "8081" ) {
-    BASE_URL = 'http://localhost:8080/api/usuario';
+    BASE_URL = 'http://localhost:8080/api/private/usuario';
 }else{
-    BASE_URL = window.location.origin + '/api/usuario';
+    BASE_URL = window.location.origin + '/api/private/usuario';
 }
 
 	$scope.usuario = {};
