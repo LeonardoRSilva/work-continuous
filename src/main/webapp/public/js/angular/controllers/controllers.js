@@ -1,6 +1,11 @@
 myApp.controller('homeController',  function($scope, $http){
 
- var BASE_URL = 'http://localhost:8080/api';
+var BASE_URL;
+if (window.location.port === "8081" ) {
+    BASE_URL = 'http://localhost:8080/api';
+}else{
+    BASE_URL = window.location.origin + '/api';
+}
 
 	$scope.usuario = {};
 	$scope.usuarios = [];
@@ -20,7 +25,7 @@ myApp.controller('homeController',  function($scope, $http){
 
 	//------findall
 		function findall(){
-				$http.get('http://localhost:8080/api/private/usuario').success(function(data){
+				$http.get(BASE_URL+'/private/usuario').success(function(data){
 
 
 
@@ -70,7 +75,7 @@ myApp.controller('homeController',  function($scope, $http){
 		 function add(index) {
 			var requestParams = {
 	       	method: 'POST',
-	        url: 'http://localhost:8080/api/private/usuario',
+	        url: BASE_URL+'/private/usuario',
 	        headers: { 'Content-Type': 'application/json' },
 	        data: index
       		};
@@ -112,7 +117,7 @@ myApp.controller('homeController',  function($scope, $http){
 			
 			var requestParams = {
 	       	method: 'PUT',
-	        url: 'http://localhost:8080/api/private/usuario',
+	        url: BASE_URL+'/private/usuario',
 	        headers: { 'Content-Type': 'application/json' },
 	        data: index
       		};
