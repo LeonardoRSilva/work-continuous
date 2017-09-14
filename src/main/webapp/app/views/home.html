@@ -1,0 +1,65 @@
+
+
+<!--Mostrar/Esconder: <input type="checkbox" ng-model="checked" />-->
+<!--<div ng-hide="checked">Conteudo mostrado ao carregar a pagina</div>-->
+<!--<div ng-show="checked">Mostrar conteudo</div>-->
+
+<!--<button ng-click="esconder = !esconder">Esconder/Mostrar</button>-->
+<!--<div ng-show="esconder"></div>-->
+
+<div id="busca">
+	<input type="text" id="buscar" class="form-control" placeholder="Digite um nome" ng-model="buscausuarios" />
+</div>
+<!-- outra forma de include pelo scopo-->
+<div ng-include="header" ></div>
+
+<span ng-bind="messages" ng-show="messages != '' "></span>
+<button ng-click="newusuario()" ng-show="!showForm" class="btn btn-default">Cadastrar</button>
+<form id="adicionar" ng-show="showForm" ng-submit="saveusuario(usuario)">
+
+	<br />
+	<br />
+
+	<input type="text" ng-model="usuario.nome" placeholder="Nome do usuario" />
+	<input type="text" ng-model="usuario.email" placeholder="Email do usuario" />
+	<input type="password" ng-model="usuario.password" placeholder="Senha do usuario" />
+	<button  type="submit" class="btn btn-success">Salvar</button>
+	<button ng-click="cancelusuario()" class="btn btn-danger">Cancelar</button>
+</form>
+
+
+<table  width="100%" cellspacing="0"  class="table table-striped" style="font-size: 18px;">
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>Email</th>
+		<th>Name</th>
+		<th colspan="2">Ações</th>
+	</tr>
+	</thead>
+	<tbody >
+	<tr ng-show="tr_edit">
+
+		<td ><input type="text" ng-model="usuario_editar.email"> </td>
+		<td ><input type="password" ng-model="usuario_editar.password" placeholder="password"> </td>
+		<td ><button type="" class="btn btn-success" ng-click="atualizar(usuario_editar)">Atualizar</button> <button type="" class="btn btn-danger" ng-click="cancelar()">Cancelar</button></td>
+	</tr>
+
+
+	<tr ng-repeat="usuario in usuarios | filter: buscausuarios | limitTo: 10">
+		<td>{{usuario.id}}</td>
+		<td>{{usuario.email }}</td>
+		<td>{{usuario.nome }}</td>
+
+		<td>
+			<button type="button" class="btn btn-primary btn-lg"ng-click="edit(usuario)">
+				<span class="glyphicon glyphicon-pencil"></span> Editar</button>
+		</td>
+		<td>
+			<button type="button" class="btn btn-danger btn-lg" ng-click="deletar(usuario)">
+				<span class="glyphicon glyphicon-remove-circle"></span> Deletar
+			</button>
+		</td>
+	</tr>
+	</tbody>
+</table>

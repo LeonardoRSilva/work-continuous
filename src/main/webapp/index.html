@@ -1,10 +1,32 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="myApp">
 <head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
+	<meta charset="UTF-8">
+	<title>Apresentação Travis</title>
+	
+	<link rel="author" href="humans.txt">
+	<link rel="stylesheet" href="vendor/twitter/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="public/css/style.css" />
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Share+Tech" rel="stylesheet" type="text/css">
 </head>
+
+
 <body>
-	Ola
+	<div ng-include src="'app/views/header.html'"></div>
+
+	<div ng-view></div>
+	<ng-include src="'app/views/footer.html'"></ng-include>
+
+
+	
+	
+	
+	<script src="public/js/angular/angular.js"></script>
+	<script src="public/js/angular/ngtable.js"></script>
+	<script src="public/js/jquery/jquery.js"></script>
+	<script src="public/js/angular/config.js"></script>
+	<script src="public/js/angular/filters/filters.js"></script>
+	<script src="public/js/angular/libs/route.js"></script>
+	<script src="public/js/angular/controllers/controllers.js"></script>
 </body>
 </html>

@@ -16,13 +16,13 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
 
 
 
 # LIQUIBASE
 liquibase:
-  enabled: true
+  enabled: false
   change-log: classpath:data/config/master.xml
   url: jdbc:postgresql://localhost:5432/work-continuous
   user: postgres
