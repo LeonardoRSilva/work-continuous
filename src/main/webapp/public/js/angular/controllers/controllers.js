@@ -2,9 +2,9 @@ myApp.controller('homeController',  function($scope, $http){
 
 var BASE_URL;
 if (window.location.port === "8081" ) {
-    BASE_URL = 'http://localhost:8080/api';
+    BASE_URL = 'http://localhost:8080/api/usuario';
 }else{
-    BASE_URL = window.location.origin + '/api';
+    BASE_URL = window.location.origin + '/api/usuario';
 }
 
 	$scope.usuario = {};
@@ -25,7 +25,7 @@ if (window.location.port === "8081" ) {
 
 	//------findall
 		function findall(){
-				$http.get(BASE_URL+'/private/usuario').success(function(data){
+				$http.get(BASE_URL).success(function(data){
 
 
 
@@ -75,7 +75,7 @@ if (window.location.port === "8081" ) {
 		 function add(index) {
 			var requestParams = {
 	       	method: 'POST',
-	        url: BASE_URL+'/private/usuario',
+	        url: BASE_URL,
 	        headers: { 'Content-Type': 'application/json' },
 	        data: index
       		};
@@ -117,7 +117,7 @@ if (window.location.port === "8081" ) {
 			
 			var requestParams = {
 	       	method: 'PUT',
-	        url: BASE_URL+'/private/usuario',
+	        url: BASE_URL,
 	        headers: { 'Content-Type': 'application/json' },
 	        data: index
       		};
