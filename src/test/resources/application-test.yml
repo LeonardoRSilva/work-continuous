@@ -1,0 +1,31 @@
+# LOGGING
+logging:
+  file: build/easy-buying.log
+  level:
+    org.wpattern.test.easy.buying: DEBUG
+    org.wpattern.easy.buying: DEBUG
+    org.springframework: INFO
+    org.hibernate: INFO
+
+# DATABASE
+spring:
+  datasource:
+    url: jdbc:h2:mem:easy_buying;INIT=runscript from 'classpath:schema-h2.sql'\;runscript from 'classpath:data-h2.sql'
+    username: work
+    password: 123456
+    initialize: true
+  jpa:
+    database: H2
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+
+
+# LIQUIBASE
+liquibase:
+  enabled: false
+  change-log: classpath:data/config/master.xml
+  url: jdbc:postgresql://localhost:5432/work-continuous
+  user: postgres
+  password: admin

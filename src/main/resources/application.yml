@@ -1,0 +1,13 @@
+# APPLICATION
+spring:
+  application:
+    name: work-continuous
+    description: Projeto desenvolvido pelos alunos da Faculdade UNA de Uberlândia.
+    version: @project.version@
+  profiles:
+    active: dev
+
+# SERVER
+server:
+  contextPath: /
+  port: 8080

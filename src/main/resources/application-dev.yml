@@ -1,0 +1,29 @@
+# LOGGING
+logging:
+  file: build/work-continuous.log
+  level:
+    org.wpattern.easy.buying: DEBUG
+    org.springframework: INFO
+    org.hibernate: INFO
+
+# DATABASE
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/work-continuous
+    username: postgres
+    password: 123456
+    driverClassName: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+
+
+# LIQUIBASE
+liquibase:
+  enabled: true
+  change-log: classpath:data/config/master.xml
+  url: jdbc:postgresql://localhost:5432/work-continuous
+  user: postgres
+  password: 123456

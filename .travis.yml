@@ -1,0 +1,12 @@
+language: java
+jdk:
+  - oraclejdk8
+app: work-continuous
+script:
+- mvn test
+notifications:
+  email:
+    recipients:
+      - leonardo.rsil@gmail.com    
+    on_success: change # default: change
+    on_failure: always # default: always
