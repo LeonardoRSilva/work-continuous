@@ -4,6 +4,8 @@ jdk:
 app: work-continuous
 script:
 - mvn test
+after_success:
+- bash <(curl -s https://codecov.io/bash)
 notifications:
   email:
     recipients:
