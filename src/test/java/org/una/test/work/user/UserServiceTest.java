@@ -52,8 +52,17 @@ public class UserServiceTest extends BaseTest {
     public void test_find_by_name_not_found() throws Exception {
 
         // Test if Data was removed
-        mockMvc.perform(get("/api/private/usuario/carlos"))
+        mockMvc.perform(get("/api/private/usuario/asdfa"))
                 .andExpect(status().isNotFound());
+
+    }
+
+    @Test
+    public void test_find_by_name_sucess() throws Exception {
+
+        // Test if Data was removed
+        mockMvc.perform(get("/api/private/usuario/User 1"))
+                .andExpect(status().isOk()).andDo(print());;
 
     }
 
@@ -64,6 +73,8 @@ public class UserServiceTest extends BaseTest {
                 .content("{\"id\" : 5,\"email\" : \"carlos@gmail.com\",\"nome\" : \"carlos\", \"password\" : \"123456\"}"))
                 .andExpect(status().isOk());
     }
+
+
 
     @Test
     public void test_post_conflict() throws Exception {

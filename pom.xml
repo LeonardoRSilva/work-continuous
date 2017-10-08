@@ -139,6 +139,17 @@
 				<format>xml</format>
 			</formats>
 			<check />
+            <instrumentation>
+                <ignores>
+                    <ignore>org.una.work.errors.*</ignore>
+                    <ignore>org.una.work.utils.AppConfig</ignore>
+                    <ignore>org.una.work.utils.BaseBean</ignore>
+                    <ignore>org.una.work.utils.BaseEntity</ignore>
+                    <ignore>org.una.work.utils.BaseKey</ignore>
+                    <ignore>org.una.work.utils.ServicePath</ignore>
+                    <ignore>org.una.work.utils.ServiceMap</ignore>
+                </ignores>
+            </instrumentation>
 		</configuration>
 	</plugin>
 

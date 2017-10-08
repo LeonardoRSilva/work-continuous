@@ -25,7 +25,7 @@ public class UsuarioService extends GenericService<Usuario, Long> {
 
     @RequestMapping(path = "/{nomeUsuario}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<?> findCurrentUser(@PathVariable("nomeUsuario") String nomeUsuario) {
+    public ResponseEntity<?> findUsuarioName(@PathVariable("nomeUsuario") String nomeUsuario) {
 
 
 
