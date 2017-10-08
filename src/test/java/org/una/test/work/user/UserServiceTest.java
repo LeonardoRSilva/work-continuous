@@ -94,18 +94,10 @@ public class UserServiceTest extends BaseTest {
                 .andDo(print());
     }
 
-    @Test
-    public void test_update_not_found() throws Exception {
 
-        mockMvc.perform(put("/api/private/usuario")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"id\" : null,\"email\" : \"carlos@gmail.com\",\"nome\" : null, \"password\" : \"102123\"}"))
-                .andExpect(status().isNotFound())
-                .andDo(print());
-    }
 
     @Test
-    public void deleteDataById_MustCauseOk() throws Exception {
+    public void test_delete_Ok() throws Exception {
 
 
         // Delete
@@ -113,10 +105,6 @@ public class UserServiceTest extends BaseTest {
         .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"id\" : 5,\"email\" : \"carlos@gmail.com\",\"nome\" : \"carlos\", \"password\" : \"102123\"}"))
                 .andExpect(status().isOk());
-
-        // Test if Data was removed
-        mockMvc.perform(get("/api/private/usuario/carlos"))
-                .andExpect(status().isNotFound());
 
     }
 
