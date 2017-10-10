@@ -61,8 +61,8 @@ public class UserServiceTest extends BaseTest {
     public void test_find_by_name_sucess() throws Exception {
 
         // Test if Data was removed
-        mockMvc.perform(get("/api/private/usuario/User 1"))
-                .andExpect(status().isOk()).andDo(print());;
+        mockMvc.perform(get("/api/private/usuario/User 2"))
+                .andExpect(status().isOk()).andDo(print());
 
     }
 
@@ -114,20 +114,21 @@ public class UserServiceTest extends BaseTest {
         // Delete
         mockMvc.perform(delete("/api/private/usuario")
         .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"id\" : 5,\"email\" : \"carlos@gmail.com\",\"nome\" : \"carlos\", \"password\" : \"102123\"}"))
+                .content("{\"id\" : 1,\"email\" : \"admin@gmail.com\",\"nome\" : \"User 1\", \"password\" : \"123\"}"))
                 .andExpect(status().isOk());
 
     }
 
+
+
     @Test
-    public void test_delete_conflict() throws Exception {
+    public void test_delete_not_found() throws Exception {
 
 
-        // Delete
         mockMvc.perform(delete("/api/private/usuario")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{}"))
-                .andExpect(status().isConflict());
+                .content("{\"id\" : 15,\"email\" : \"carlos@gmail.com\",\"nome\" : \"carlos\", \"password\" : \"102123\"}"))
+                .andExpect(status().isNotFound());
 
 
     }

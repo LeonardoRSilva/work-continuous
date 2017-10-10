@@ -53,22 +53,15 @@ public abstract class GenericService<T extends BaseEntity<ID>, ID extends Serial
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(fieldsErrorDetalhe);
 		}
 
-		if (entityObject == null) {
-			this.LOGGER.error("Entity with null value.");
-			return null;
-		}
+
 
 		entityObject.setId(null);
 
 		entityObject = this.genericRepository.save(entityObject);
 
-		if (entityObject.getId() == null) {
-			message.AddField("mensagem", "Não encontrado");
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-		}
 
-		// return
-		// ResponseEntity.status(HttpStatus.OK).body(this.genericRepository.save(entityObject));
+
+
 		message.AddField("mensagem", "Salvo com sucesso");
 		message.setData(entityObject);
 		return ResponseEntity.status(HttpStatus.OK).body(message);
@@ -83,17 +76,7 @@ public abstract class GenericService<T extends BaseEntity<ID>, ID extends Serial
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(fieldsErrorDetalhe);
 		}
 
-		if (entityObject == null) {
-			this.LOGGER.error("Entity can not be null.");
-			message.AddField("mensagem", "Não encontrado");
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-		}
 
-		if (entityObject.getId() == null) {
-			this.LOGGER.error("ID can not be null.");
-			message.AddField("mensagem", "Não encontrado");
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
-		}
 
 		this.genericRepository.saveAndFlush(entityObject);
 
@@ -105,11 +88,11 @@ public abstract class GenericService<T extends BaseEntity<ID>, ID extends Serial
 	@RequestMapping(method = RequestMethod.DELETE)
 	public ResponseEntity<?> deletar(@RequestBody T entityObject) {
 		this.LOGGER.debug(String.format("Request to delete the record [%s].", entityObject));
-
+				entityObject =  this.genericRepository.findOne(entityObject.getId());
 		try {
 	
 			if (entityObject == null) {
-				this.LOGGER.error("Entity can not be null.");
+
 				message.AddField("mensagem", "Não encontrado");
 				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
 			}
